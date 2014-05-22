@@ -1,6 +1,6 @@
 README.md
 ==========================================================================================================
- **bold** Aim :  **bold** This file explain the usage of file run_analysis.R. 
+ ** Aim :  ** This file explain the usage of file run_analysis.R. 
 
 The working directory should be properly given till the path of 'UCI HAR Dataset' folder. Hence the datasets can be loaded thereon.
 
@@ -16,7 +16,7 @@ printing of the following variables will give the intermediate results:
 
 These are the results needed as output which can be accessed by printing them.
 
-**bold**Dependencies : **bold**
+**Dependencies : **
 The program need to be executed in the order provided in the script file. As each variable is dependent on its previous variable.
 1) Like for merging the dataset, it depends on all train, test, train_labels, test_labels, train_subject, test_subject and features.
 2) For getting the measurements, it depends only on features variable.
