@@ -69,7 +69,7 @@ The variables that I have used in my code are as below:
 
  VI)  **Data Manipulations:**
  
- -  ** Getting Data:** get the data into memory through read.table as the files are tab seperated and make header=FALSE as there is no header present for any of the files.
+ -  **Getting Data:** get the data into memory through read.table as the files are tab seperated and make header=FALSE as there is no header present for any of the files.
 Assigning Names to columns : As mentioned earlier, as there are no headers for the training and testing datasets, we may need to explicitly assign them using colnames(), and assign the features as colnames for training and testing datasets.
  -  **Combining Columns :** The columns labels and subjects are combined with datasets using cbind(). The names of these columns are assigned again using the colnames() function at a particular index.
  -  **Merging dataset:**The two datasets train and test are merged using rbind().
