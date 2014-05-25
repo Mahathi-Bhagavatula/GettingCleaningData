@@ -55,6 +55,13 @@ measurements <- c(grep("mean\\(\\)",as.character(features$V2),value=TRUE)
                   ,grep("std\\(\\)",as.character(features$V2),value=TRUE)
                   ,grep("Mean",as.character(features$V2),value=TRUE))
 
+# measurements along with the columns subjects and labels.
+measurementdModified <- c(measurements,"subjects","labels")
+
+##Consider the dataset which has the above mentioned measurements :
+measurementDataSet <- finalDataSet[,measurementdModified]
+
+
 ##Using Activity Labels && Labelling the DataSet ::
 
 ##Get the activity data into a variable called activity.
@@ -63,8 +70,8 @@ activity <- read.table("activity_labels.txt",stringsAsFactors=FALSE)
 ##Now, by iterating through each data label of final dataset, 
 ##get the activity name for that label and assign it to the label of final data set.
 ##Thus results in activity_labelled.
-finalDataSet$activityLabels <- ""
-finalDataSet$activityLabels<- sapply(1:nrow(finalDataSet), function(x){finalDataSet[x,]$activityLabels <- activity[as.numeric(finalDataSet[x,]$labels),]$V2})
+measurementDataSet$activityLabels <- ""
+measurementDataSet$activityLabels<- sapply(1:nrow(measurementDataSet), function(x){measurementDataSet[x,]$activityLabels <- activity[as.numeric(measurementDataSet[x,]$labels),]$V2})
 
 
 ##Tidy data Generation ::
@@ -72,7 +79,7 @@ finalDataSet$activityLabels<- sapply(1:nrow(finalDataSet), function(x){finalData
 ##for every subject and every label, get the mean of remaining variables by ignoring the missing values.
 ##For this use melt and dcast of reshape2 library.
 library(reshape2)
-dataMelt <- melt(finalDataSet, id.var=c("activityLabels","subjects"))
+dataMelt <- melt(measurementDataSet, id.var=c("activityLabels","subjects"))
 tidyData <- dcast(dataMelt, subjects + activityLabels ~ variable, fun.aggregate=mean, na.rm=TRUE)
 
 ##Put this data into file

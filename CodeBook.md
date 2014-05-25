@@ -62,6 +62,8 @@ The variables that I have used in my code are as below:
 - features : to store the values from features.txt
 - finalDataSet : contains the final merge of train and test data.
 - measurements : stores the value of all the features which has mean and standard deviation in it.
+- measurementdModified  :measurements along with labels and subjects columns.
+- measurementDataSet  : the part of dataset which has only the above mentioned columns.
 - activity  : store the values from activity_labels.txt
 - finalDataSet$activityLabels : stores the values of activity values with respect to the final dataset.
 - dataMelt  : stored the molten value of finalDataSet with activityLabels and subjects as ids.
@@ -73,7 +75,7 @@ The variables that I have used in my code are as below:
 Assigning Names to columns : As mentioned earlier, as there are no headers for the training and testing datasets, we may need to explicitly assign them using colnames(), and assign the features as colnames for training and testing datasets.
  -  **Combining Columns :** The columns labels and subjects are combined with datasets using cbind(). The names of these columns are assigned again using the colnames() function at a particular index.
  -  **Merging dataset:**The two datasets train and test are merged using rbind().
- -  **Partial Match of Data :** a regex is run on a character vector of all features to see if there is a match  for mean() or std() or Mean. This is done using the function grep. And then these values are appended to a character vector.
+ -  **Partial Match of Data :** a regex is run on a character vector of all features to see if there is a match  for mean() or std() or Mean. This is done using the function grep. And then these values are appended to a character vector and consider this dataset for further processing.
  -  **New Column with manupulated values:** a new column activityLabels is added to finalData. This column is filled with activity variables w.r.t the values in labels column based on activity_labels.txt file.
  -  **Melting and Casting:** the finalDataSet is been melted with id variables as 'activity labels' and 'subjects'. This data structure is then used to calculate the mean of all variables for each activity and subject. This is referred to as tidyData in project.
  -  **Writing Data to file :** The values of tidyData are written to a file using write.table() function. 
