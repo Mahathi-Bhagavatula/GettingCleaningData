@@ -83,4 +83,4 @@ dataMelt <- melt(measurementDataSet, id.var=c("activityLabels","subjects"))
 tidyData <- dcast(dataMelt, subjects + activityLabels ~ variable, fun.aggregate=mean, na.rm=TRUE)
 
 ##Put this data into file
-write.table(tidyData,file = "tidyData.txt")
+write.table(tidyData,file = "tidyData.txt",sep="\t")
